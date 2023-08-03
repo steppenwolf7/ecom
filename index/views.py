@@ -1,11 +1,13 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render
-import requests
+#import requests
 
 @login_required
 def index(request):                                             
-   return render(request, 'index.html')
+   username = request.user.username
+   context = {'username': username}
+   return render(request, 'index.html', context)
    
    
    """ username = request.POST["username"]  # to jest formularz
