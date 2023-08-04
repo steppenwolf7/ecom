@@ -8,11 +8,11 @@ from django.shortcuts import redirect
 class MyLogOutView(LogoutView):
    template_name = 'registration/logout.html'
    #next_page = 'accounts/logout'   
-   pass
+   
 
 class MyLoginView(LoginView):
    next_page = "index"
-
+   
 
 
 @login_required

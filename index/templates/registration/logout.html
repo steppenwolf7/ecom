@@ -1,10 +1,7 @@
-<!DOCTYPE html>
-<html>
-<body>
+{% extends "base.html" %}
+
+{% block content %}
 <h2>{{ username }}</h2>
 <h1>Strona do Wylogowania!</h1>
 <h4> <a href="{% url 'login' %}">Zaloguj się ponownie !</a></h4>
-<p></p>
-
-</body>
-</html>
+{% endblock %}
