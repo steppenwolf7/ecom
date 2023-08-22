@@ -2,6 +2,11 @@
 <html>
 <head>
     <title>e:commerce</title>  
+    <meta charset="utf-8">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
     <style>
         body {
             background-image: url("static/bg.jpg");
@@ -9,12 +14,17 @@
             background-repeat: no-repeat;
             color: black;    
         }
-        </style>
+    </style>
 </head>
 
 
 <body>
-    <p>Welcome to my Django project!</p>
+    <div class="row">
+        <div class="col"></div>
+        <div class="col"><h1>Django Shop!</h1></div>
+        <div class="col"></div>
+      </div>
+    
 {% block content %}
  {% endblock %} 
 </body>

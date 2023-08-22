@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LogoutView, LoginView
 from django.shortcuts import render, redirect
 from django.contrib import messages
-
+"""
 def register(request):
    if request.method == "POST":
       form = UserCreationForm(request.POST)
@@ -13,7 +13,7 @@ def register(request):
       return redirect('index')
    else:
       form = UserCreationForm(request.POST)
-   return render(request, 'register.html', {'form':form})
+   return render(request, 'register.html', {'form':form})"""
 
 #@login_required
 def index(request):                                             
