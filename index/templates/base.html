@@ -16,12 +16,17 @@
 
 <body>
     <div class="row">
-        <div class="col"></div>
+        <div class="col">{% if request.user.image %}
+            <img src="{{ request.user.image.url }}" alt="Profile Image" class="img-fluid rounded-circle">
+        {% else %}
+            <p>No profile image available</p>
+        {% endif %}</div>
         <div class="col"><h1>Django Shop!</h1></div>
         <div class="col"></div>
       </div>
-    
+      
 {% block content %}
- {% endblock %} 
+ 
+{% endblock %} 
 </body>
 </html>

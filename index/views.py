@@ -2,6 +2,10 @@
 #from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LogoutView, LoginView
 from django.shortcuts import render, redirect
+from django_registration.views import RegistrationView
+from index.forms import CustomUserForm
+#from index.models import CustomUser
+from django.contrib.auth import login  
 #from django.contrib import messages
 """
 def register(request):
@@ -14,6 +18,26 @@ def register(request):
    else:
       form = UserCreationForm(request.POST)
    return render(request, 'register.html', {'form':form})"""
+
+class MyRegistrationView(RegistrationView):
+   form_class=CustomUserForm
+   success_url='/'
+   
+   
+   def register(self, form):
+      user = form.save(commit=False) # definiuje obiekt user i wstrzymuje jego zapis
+      #user.is_active = False
+      
+      if 'image' in self.request.FILES:
+            user.image = self.request.FILES['image']  # Przypisuje przesłane zdjęcie do pola image
+
+      user.save()
+      login(self.request, user)
+      
+      return user
+   
+   
+
 
 #@login_required
 def index(request):                                             
