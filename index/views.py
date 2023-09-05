@@ -26,14 +26,13 @@ class MyRegistrationView(RegistrationView):
    
    def register(self, form):
       user = form.save(commit=False) # definiuje obiekt user i wstrzymuje jego zapis
-      #user.is_active = False
       
       if 'image' in self.request.FILES:
             user.image = self.request.FILES['image']  # Przypisuje przesłane zdjęcie do pola image
 
       user.save()
       login(self.request, user)
-      
+   
       return user
    
    
