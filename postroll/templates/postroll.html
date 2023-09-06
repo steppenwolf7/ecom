@@ -2,5 +2,28 @@
 
 {% block content %}
 <h4>Hello, {{ username }}!</h4>
+{% if user.is_authenticated %}
+     <h4> <a href="{% url 'my-logout' %}">Wyloguj</a></h4>
+{% endif %}
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Dodaj post</button>
+</form>
+
+<head>
+    <title>Wall</title>
+</head>
+<body>
+    <h1>Lista postów</h1>
+    <ul>
+        {% for post in posts %}
+            <li>{{ post.author.username }} - {{ post.created_at }}:</li>
+            <p>{{ post.content }}</p>
+        {% endfor %}
+    </ul>
+
+
 
 {% endblock %}
