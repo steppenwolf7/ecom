@@ -6,23 +6,33 @@
      <h4> <a href="{% url 'my-logout' %}">Wyloguj</a></h4>
 {% endif %}
 
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Dodaj post</button>
-</form>
+<div class="row">
+    <div class="col-sm-4">
+        <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Dodaj post</button>
+    </form>
+    </div>
+    <div class="col-sm-8">
+       <title>Wall</title>
+       <h1>Wall Post</h1>
+            <ul>
+                {% for post in posts %}
+                <li>{{ post.author.username }} - {{ post.created_at }}:</li>
+                    <p>{{ post.content }}</p>
+                    
+                    {% if post.author.username == username %}
+                    <form method="post" action="{% url 'delete_post' post.id %}">
+                    {% csrf_token %}
+                    <input type="submit" value="Usuń post">
+                    </form>
+                    {% endif %}
+                {% endfor %}
+                </ul>
 
-<head>
-    <title>Wall</title>
-</head>
-<body>
-    <h1>Lista postów</h1>
-    <ul>
-        {% for post in posts %}
-            <li>{{ post.author.username }} - {{ post.created_at }}:</li>
-            <p>{{ post.content }}</p>
-        {% endfor %}
-    </ul>
+    </div>
+  </div>
 
 
 

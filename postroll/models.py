@@ -8,7 +8,7 @@ class Post(models.Model):
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-
+    #profile_image = CustomUser.image
     class Meta:
         ordering = ['-created_at']  # Sortowanie postów od najnowszego do najstarszego
 
