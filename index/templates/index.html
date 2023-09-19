@@ -1,11 +1,38 @@
 {% extends "base.html" %}
 
 {% block content %}
+
+
+
+
+
+<div class="row">
+    <div class="col-sm-4">
 <h1>Strona główna</h1>
 {% if user.is_authenticated %}
     <h4>Hello, {{ username }}!</h4>
     <h4> <a href="accounts/logout/">Wyloguj</a></h4>
     <h4> <a href="postroll/">Napisz Post</a></h4>
+    </div>
+    
+    <div class="col-sm-8">
+        <title>Wall</title>
+        <h1>Wall Post</h1>
+             <ul class="no-bullet">
+                 {% for post in posts %}
+                 <div class="ram">
+                 <li>{{ post.author.username }} - {{ post.created_at }}:</li>
+                     <p>{{ post.content }}</p>
+                     
+                     {% if post.author.username == username %}
+                     <form method="post" action="{% url 'delete_post' post.id %}">
+                     {% csrf_token %}
+                     <input type="submit" value="Usuń swój post">
+                 </form></div><br>
+                 {% endif %}
+                 {% endfor %}
+                </ul>
+            </div>
     {% endif %}
 
 {% if not user.is_authenticated %}

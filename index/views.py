@@ -7,6 +7,8 @@ from index.forms import CustomUserForm
 #from index.models import CustomUser
 from django.contrib.auth import login  
 #from django.contrib import messages
+from postroll.models import Post
+
 """
 def register(request):
    if request.method == "POST":
@@ -40,8 +42,11 @@ class MyRegistrationView(RegistrationView):
 
 #@login_required
 def index(request):                                             
+   posts = Post.objects.all() 
    username = request.user.username
-   context = {'username': username}
+   
+   context = {'username': username,
+              'posts': posts}
    return render(request, 'index.html', context)
 
 class MyLogOutView(LogoutView):

@@ -9,3 +9,12 @@ body {
     max-width: 100px; 
     max-height: 100px; 
 }
+
+.ram {
+  border: 2px solid #000; /* Grubość i kolor ramki */
+  padding: 10px; /* Wewnętrzny odstęp od tekstu */
+  width: 300px; /* Szerokość ramki */
+}
+.no-bullet {
+  list-style-type: none;
+}
