@@ -20,7 +20,7 @@
             <ul class="no-bullet">
                 {% for post in posts %}
                 <div class="ram">
-                <li>{{ post.author.username }} - {{ post.created_at }}:</li>
+                <li><img src="{{ post.author.image.url }}" class="rounded-circle" width="40" height="40" alt="{{ post.author.username }}'s profile picture"> {{ post.author.username }} - {{ post.created_at }}:</li>
                     <p>{{ post.content }}</p>
                     
                     {% if post.author.username == username %}

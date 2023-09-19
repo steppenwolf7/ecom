@@ -19,9 +19,11 @@ def postroll(request):
    posts = Post.objects.all() 
    username = request.user.username
    
+   
    context = {'username': username,
               'form': form,
-              'posts': posts}
+              'posts': posts,
+              }
    
    return render(request, 'postroll.html', context)
 
