@@ -40,3 +40,18 @@ def delete_post(request, post_id):
         # Obsłuż przypadki, gdy użytkownik nie jest autorem posta
         # Możesz dodać odpowiedni komunikat lub inne działania
         pass
+
+
+@login_required
+def edit_post(request, post_id): #id posta przekazywane jest jako argument w formie parametru w adresie URL
+    post = get_object_or_404(Post, id=post_id)
+
+    if request.method == 'POST':
+        form = PostForm(request.POST, instance=post)
+        if form.is_valid():
+            form.save()
+            return redirect('postroll')  # Przekieruj na stronę z detalami posta po edycji
+    else:
+        form = PostForm(instance=post)
+
+    return render(request, 'edit_post.html', {'form': form, 'post': post})    

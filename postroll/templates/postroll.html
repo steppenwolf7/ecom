@@ -27,7 +27,10 @@
                     <form method="post" action="{% url 'delete_post' post.id %}">
                     {% csrf_token %}
                     <input type="submit" value="Usuń swój post">
-                </form></div><br>
+                </form>
+                <a href="{% url 'edit_post' post_id=post.id %}">Edytuj ten post</a>
+            </div><br>
+                
                 {% endif %}
                 {% endfor %}
                 </ul>
